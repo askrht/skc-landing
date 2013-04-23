@@ -1,1 +1,1 @@
-Landing page for http://startupkc.org
+Landing page for startupkc
