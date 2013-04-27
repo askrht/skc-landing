@@ -36,7 +36,7 @@
  * @package MediaWiki
  */
  
- require_once( 'AuthPlugin.php' );
+require_once( 'extensions/AuthPlugin.php' );
  
 class AuthBugzilla extends AuthPlugin {
  
