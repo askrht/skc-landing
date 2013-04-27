@@ -44,10 +44,17 @@ class AuthBugzilla extends AuthPlugin {
                 $this->bugzillatbl = "`bugzilla`.`profiles`";
         }
  
-        function encryptPassword( $pass, $salt ) {
-                return crypt( $pass,$salt );
-        }
+//        function encryptPassword( $pass, $salt ) {
+//                return crypt( $pass,$salt );
+//        }
  
+        function encryptPassword( $pass, $salt ) {
+                // return crypt( $pass,$salt );
+                $perl = new Perl();
+                $perl->require("/var/www/wiki/extensions/bz_crypt.pl");
+                return $perl->bz_crypt($pass, $salt);
+        }
+
         /**
          * Check whether there exists a user account with the given name.
          * The name will be normalized to MediaWiki's requirements, so
