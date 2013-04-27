@@ -171,7 +171,7 @@ class AuthBugzilla extends AuthPlugin {
          * @return bool
          */
         function allowPasswordChange() {
-                return false;
+                return true;
         }
  
         /**
@@ -187,36 +187,36 @@ class AuthBugzilla extends AuthPlugin {
          * @return bool
          * @public
          */
-//        function setPassword( $user, $password ) {
-//                $saltchars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz./';
-// 
-//                # Generate the salt.  We use an 8 character (48 bit) salt for maximum
-//                # security on systems whose crypt uses MD5.  Systems with older
-//                # versions of crypt will just use the first two characters of the salt.
-//                $salt = '';
-//                for ($i=0 ; $i < 8 ; $i++ ) {
-//                        $salt .= $saltchars[rand(0,63)];
-//                }
-// 
-//                $dbr =& wfGetDB( DB_MASTER );
-//                $qusername = $dbr->addQuotes( $user->mName );
-//                $user = $dbr->tableName( 'user' );
-//                $email = $dbr->selectField(
-//                        "$user",
-//                        "user_email",
-//                        "user_name=$qusername and user_email_authenticated is not null");
-//                #$qemail = $dbr->addQuotes( $email );
-//
-//                $newpass = $this->encryptPassword($password,$salt);
-// 
-//                $res = $dbr->update(
-//                        $this->bugzillatbl,
-//                        array( "cryptpassword" => $newpass),
-//                        array( "CONCAT(login_name,disabledtext)" => $email),
-//                        "AuthBugzilla::setPassword" );
-// 
-//                return true;
-//        }
+        function setPassword( $user, $password ) {
+                $saltchars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz./';
+ 
+                # Generate the salt.  We use an 8 character (48 bit) salt for maximum
+                # security on systems whose crypt uses MD5.  Systems with older
+                # versions of crypt will just use the first two characters of the salt.
+                $salt = '';
+                for ($i=0 ; $i < 8 ; $i++ ) {
+                        $salt .= $saltchars[rand(0,63)];
+                }
+ 
+                $dbr =& wfGetDB( DB_MASTER );
+                $qusername = $dbr->addQuotes( $user->mName );
+                $user = $dbr->tableName( 'user' );
+                $email = $dbr->selectField(
+                        "$user",
+                        "user_email",
+                        "user_name=$qusername and user_email_authenticated is not null");
+                #$qemail = $dbr->addQuotes( $email );
+
+                $newpass = $this->encryptPassword($password,$salt);
+ 
+                $res = $dbr->update(
+                        $this->bugzillatbl,
+                        array( "cryptpassword" => $newpass),
+                        array( "CONCAT(login_name,disabledtext)" => $email),
+                        "AuthBugzilla::setPassword" );
+ 
+                return true;
+        }
  
         /**
          * Update user information in the external authentication database.
@@ -227,7 +227,7 @@ class AuthBugzilla extends AuthPlugin {
          * @public
          */
         function updateExternalDB( $user ) {
-                return false;
+                return true;
         }
  
         /**
@@ -250,7 +250,7 @@ class AuthBugzilla extends AuthPlugin {
          * @public
          */
         function addUser( $user, $password ) {
-                return false;
+                return true;
         }
  
  
