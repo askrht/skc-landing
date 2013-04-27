@@ -41,7 +41,7 @@
 class AuthBugzilla extends AuthPlugin {
  
         function AuthBugzilla() {
-                $this->bugzillatbl = "`bugs`.`profiles`";
+                $this->bugzillatbl = "`bugzilla`.`profiles`";
         }
  
         function encryptPassword( $pass, $salt ) {
