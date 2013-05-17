@@ -69,7 +69,7 @@ h5{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	font-weight: normal;
-	color: #BB2800;
+	color: #fffff;
 	padding-bottom: 10px;
 }
 
@@ -120,13 +120,15 @@ h5{
 #menu ul li a{
     font-family: Arial,Helvetica,sans-serif;
     font-size: 24px;
-    color: #ffffff;
+    color: #fffff;
     font-weight: normal;
     text-decoration: none;
     display: block;
-    background: url(images/menu_bg.png) repeat-x bottom;
+/*    background: url(images/menu_bg.png) repeat-x bottom; */
     height: 25px;
     padding-top: 42px;
+	background: url(images/back_content.png);
+
 }
 
 #menu ul li a:hover, #menu ul li .active{
@@ -564,3 +566,8 @@ display: block;
 .black{
 	color: #000000;
 }
+
+.magenta{
+	color: #8A0829;
+}
+
